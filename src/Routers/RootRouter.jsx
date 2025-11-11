@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact";
 import Bills from "../Pages/Bills";
 import BillDetails from "../Components/BillDetails/BillDetails";
 import Error404 from "../Components/Error/Error404";
+import MyPayBills from "../Pages/MyPayBills";
 
 
 const router = createBrowserRouter([
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
             {
                 path: 'bill-details/:id',
                 element: <PrivateRoutes><BillDetails /></PrivateRoutes>
+            },
+            {
+                path: 'my-pay-bills',
+                element: <PrivateRoutes><MyPayBills /></PrivateRoutes>
             }
             
         ]
