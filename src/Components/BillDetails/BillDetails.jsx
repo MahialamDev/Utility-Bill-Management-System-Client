@@ -253,7 +253,8 @@ const BillDetails = () => {
                 name="address"
                 className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
                 type="text"
-                placeholder="Enter your address"
+                placeholder="Enter your address" 
+                maxlength="50"
                 required
               />
             </div>
