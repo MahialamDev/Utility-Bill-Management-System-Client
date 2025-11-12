@@ -1,13 +1,12 @@
 import React from 'react';
-import InvoicePage from '../Components/Invoice/InvoicePage';
+import MyContainar from '../Layouts/MyContainar';
 
 
 const Contact = () => {
     return (
-        <div>
-            contact
-           <InvoicePage />
-        </div>
+        <MyContainar>
+            <h1>Mahialam Rahat : 01979922268</h1>
+        </MyContainar>
     );
 };
 

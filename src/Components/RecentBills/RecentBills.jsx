@@ -11,7 +11,7 @@ import useAuth from "../../Hooks/useAuth";
 import FullScreenLoader from "../../Loader/FullScreenLoader";
 
 const RecentBills = () => {
-  const [singleCategory, setSingleCategory] = useState(null);
+  // const [singleCategory, setSingleCategory] = useState(null);
   const [recentBills, setRecentBills] = useState([]);
   const { loading, setLoading } = useAuth();
 
