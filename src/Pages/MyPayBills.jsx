@@ -13,7 +13,7 @@ const MyPayBills = () => {
 
   useEffect(() => {
     if (user.email) {
-      axiosInstance(`submited-bills?email=${user.email}`).then((data) => {
+      axiosInstance(`/submited-bills?email=${user.email}`).then((data) => {
         setMyPayBills(data.data);
         console.log(data.data);
         setLoading(false);

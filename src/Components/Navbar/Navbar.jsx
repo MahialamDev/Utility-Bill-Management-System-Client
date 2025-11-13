@@ -4,7 +4,7 @@ import MyLink from "../../Style/MyLink";
 import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { ClipLoader } from "react-spinners";
-import { CreditCard, Phone, Menu, Search, Bell, User, X } from "lucide-react";
+import { CreditCard, Phone, Menu, Search, Bell, User, X, LogOut, Edit } from "lucide-react";
 import mainLogoimg from '../../assets/myLogoW.png'
 
 
@@ -12,6 +12,7 @@ const Navbar = () => {
   const { user, logOutUser, setLoading, loading } = useAuth();
   const navigate = useNavigate();
   const [showNav, setShowNav] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   // const location = useLocation();
 
@@ -28,9 +29,9 @@ const Navbar = () => {
 
       {user && (
         <>
-          <li className="border-b border-b-gray-100 md:border-none">
+          {/* <li className="border-b border-b-gray-100 md:border-none">
             <MyLink to="/contact">Contact</MyLink>
-          </li>
+          </li> */}
           <li className="border-b border-b-gray-100 md:border-none">
             <MyLink to="/my-pay-bills">My Pay Bills</MyLink>
           </li>
@@ -42,7 +43,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     logOutUser()
       .then(() => {
-        toast("Logout SUccessfull");
+        toast.success("Logout SUccessfull");
         navigate("/");
       })
       .catch((err) => console.log(err))
@@ -193,6 +194,45 @@ const Navbar = () => {
        
      
     <header className="w-full bg-white shadow-sm sticky top-0 z-50">
+
+      {/* 🔹 Search Bar */}
+      <div
+        className={`absolute w-full left-0 right-0 flex items-center justify-center bg-white/95 backdrop-blur-md p-4 sm:p-5 shadow-md transition-all duration-500 z-50 ${
+          showSearch ? "top-0" : "-top-[800px]"
+        }`}
+      >
+        <div className="flex flex-col sm:flex-row items-center gap-3 w-full max-w-2xl">
+          {/* Input with icon */}
+          <div className="relative flex-grow w-full">
+            <Search
+              size={20}
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500"
+            />
+            <input
+              type="search"
+              placeholder="Search items..."
+              className="w-full pl-10 pr-4 py-2 rounded-full border border-gray-300 bg-gray-50 text-gray-700 text-sm sm:text-base placeholder-gray-400 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 hover:shadow-md"
+            />
+          </div>
+
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <button className="btn bg-[#2841C5] hover:bg-[#1f34a8] text-white px-5 py-2 rounded-full flex items-center justify-center gap-2 w-full sm:w-auto">
+              <Search size={18} />
+              Search
+            </button>
+
+            <button
+              onClick={() => setShowSearch(false)}
+              className="btn bg-gray-100 hover:bg-gray-200 text-gray-700 px-5 py-2 rounded-full flex items-center justify-center gap-2 w-full sm:w-auto"
+            >
+              <X size={18} />
+              Cancel
+            </button>
+          </div>
+        </div>
+      </div>
+
       {/* 🔹 Top Contact Bar */}
       <div className="w-full bg-[#EAF0FF] py-1">
         <div className="container mx-auto px-5 flex items-center justify-between text-sm text-gray-600">
@@ -207,13 +247,14 @@ const Navbar = () => {
       </div>
 
       {/* 🔹 Main Navbar */}
-      <div className="border-t border-gray-100 relative p-2">
+      <div className="border-t border-gray-100 relative py-2">
         <div className="container mx-auto px-5 py-2 flex items-center justify-between">
+
           {/* Left: Logo + Menu */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setShowNav(true)}
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="md:hidden p-1 rounded-lg hover:bg-gray-100"
             >
               <Menu size={22} className="text-gray-700" />
             </button>
@@ -237,8 +278,12 @@ const Navbar = () => {
 
           {/* Right: Icons + Profile/Login */}
           <div className="flex items-center gap-4">
-            {/* Search */}
-            <button className="hidden md:flex p-2 rounded-full hover:bg-gray-100 transition">
+
+            {/* Search Button */}
+            <button
+              onClick={() => setShowSearch(!showSearch)}
+              className="flex p-2 rounded-full hover:bg-gray-100 transition"
+            >
               <Search size={20} className="text-gray-700" />
             </button>
 
@@ -252,21 +297,56 @@ const Navbar = () => {
             {loading ? (
               <ClipLoader color="#4052D6" size={20} />
             ) : user ? (
-              <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-full overflow-hidden border-2 border-blue-200">
+              <div className="relative">
+                {/* Profile Button */}
+                <button
+                  className="flex items-center gap-2 p-1 rounded-full hover:bg-blue-100 transition"
+                  popoverTarget="popover-1"
+                  style={{ anchorName: "--anchor-1" }}
+                >
                   <img
-                    src={user?.photoURL}
-                    alt="Profile"
-                    className="w-full h-full object-cover"
+                    className="w-10 h-10 object-cover rounded-full border-2 border-blue-500 shadow-md"
+                    src={user.photoURL || "https://i.ibb.co/sdP0yB6x/images.jpg"}
+                    alt="User"
                     referrerPolicy="no-referrer"
                   />
-                </div>
-                <button
-                  onClick={handleLogOut}
-                  className="px-4 py-1.5 rounded-full bg-[#2841C5] text-white text-sm font-medium hover:bg-[#1f34a8] transition"
-                >
-                  Logout
+                  <span className="hidden md:block font-medium text-blue-600">{user.displayName || "User"}</span>
                 </button>
+
+                {/* Dropdown */}
+                <ul
+                  className="dropdown dropdown-end menu w-56 rounded-2xl bg-blue-50 shadow-lg backdrop-blur-md text-blue-700 border border-blue-200 mt-2 py-4 flex flex-col items-center space-y-3"
+                  popover="auto"
+                  id="popover-1"
+                  style={{ positionAnchor: "--anchor-1" }}
+                >
+                  <img
+                    className="w-16 h-16 rounded-full border-2 border-blue-500 shadow-sm object-cover"
+                    src={user.photoURL || "https://i.ibb.co/sdP0yB6x/images.jpg"}
+                    alt="User"
+                    referrerPolicy="no-referrer"
+                  />
+                  <p className="text-center font-semibold text-blue-600">{user.displayName || "Unknown"}</p>
+                  <p className="text-sm text-gray-600">{user.email}</p>
+
+                  {/* Edit Profile Button */}
+                  <Link to="/profile" className="w-full">
+                    <button className="w-full py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300">
+                      <Edit size={16} />
+                      Edit Profile
+                    </button>
+                  </Link>
+
+                  {/* Logout Button */}
+                  <button
+                    onClick={handleLogOut}
+                    className="w-full py-2 rounded-xl bg-blue-400 hover:bg-blue-500 text-white font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300"
+                    >
+                      <LogOut size={16}  />
+                   
+                    Log Out
+                  </button>
+                </ul>
               </div>
             ) : (
               <div className="flex items-center gap-3">

@@ -4,17 +4,23 @@ import RealTimeNotification from '../Components/RealTimeNotification/RealTimeNot
 import SwipeHome from '../Components/SwiperHome/SwiperHome';
 import Support from '../Components/Support/Support';
 import RecentBills from '../Components/RecentBills/RecentBills';
+import Hero from '../Components/Hero/Hero';
+
 
 
 
 const Home = () => {
     return (
-        <MyContainar>
-            <SwipeHome />
+        <div>
+             <Hero />
+            <MyContainar>
+            {/* <SwipeHome /> */}
+           
             <RecentBills />
             <RealTimeNotification />
             <Support />
         </MyContainar>
+        </div>
     );
 };
 
