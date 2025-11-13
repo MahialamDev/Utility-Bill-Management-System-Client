@@ -78,6 +78,21 @@ const BillDetails = () => {
     });
   };
 
+  // Payment month validation variables
+const currentDate = new Date();
+const billDate = created_at ? new Date(created_at) : new Date("invalid");
+
+const isValidBillDate = !isNaN(billDate.getTime());
+
+const currentMonth = currentDate.getMonth(); // 0-11
+const currentYear = currentDate.getFullYear();
+const billMonth = isValidBillDate ? billDate.getMonth() : -1;
+const billYear = isValidBillDate ? billDate.getFullYear() : -1;
+
+//disable button
+const isDifferentMonth =
+  currentMonth !== billMonth || currentYear !== billYear;
+
   if (loading) return <FullScreenLoader />;
 
   return (
@@ -144,7 +159,7 @@ const BillDetails = () => {
             </div>
 
             {/* Divider */}
-            <div className="border-t border-[#2841C5]/10"></div>
+            <div className="border-t border-[#2841C5]/10"></ div>
 
             {/* Description Section */}
             <div>
@@ -157,20 +172,31 @@ const BillDetails = () => {
             </div>
 
             {/* Payment Button */}
-            <div className="text-center pt-4">
-              <button
-                onClick={handleModal}
-                className="px-10 py-3 bg-[#2841C5] hover:bg-[#1f33a3] text-white font-semibold rounded-full shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-              >
-                Pay Now
-              </button>
-            </div>
+<div className="text-center pt-4">
+  <button
+    onClick={!isDifferentMonth ? handleModal : undefined}
+    disabled={isDifferentMonth}
+    className={`px-10 py-3 font-semibold rounded-full shadow-md transition-all duration-300 ${
+      isDifferentMonth
+        ? "bg-gray-300 text-gray-600 cursor-not-allowed"
+        : "bg-[#2841C5] hover:bg-[#1f33a3] text-white hover:shadow-xl cursor-pointer"
+    }`}
+    aria-disabled={isDifferentMonth}
+    title={
+      isDifferentMonth
+        ? "Payment unavailable — bill is not from this month"
+        : "Pay Now"
+    }
+  >
+    {isDifferentMonth ? "Payment Unavailable" : "Pay Now"}
+  </button>
+</div>
+
           </div>
         </div>
       </div>
 
       {/* Modal Open */}
-      <button className="btn mt-10">Open Modal Function To Pay BIll</button>
 
       <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 relative">
@@ -253,7 +279,7 @@ const BillDetails = () => {
                 name="address"
                 className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
                 type="text"
-                placeholder="Enter your address" 
+                placeholder="Enter your address"
                 maxlength="50"
                 required
               />

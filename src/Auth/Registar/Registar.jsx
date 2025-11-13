@@ -29,7 +29,9 @@ const Registar = () => {
 
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
     if (!passwordRegex.test(password)) {
-      toast.warning("Password must be at least 6 characters, include one uppercase and one lowercase letter.");
+      toast.warning(
+        "Password must be at least 6 characters, include one uppercase and one lowercase letter."
+      );
       return;
     }
 
@@ -48,7 +50,7 @@ const Registar = () => {
           photoURL,
         })
           .then()
-          .catch(err=> toast(err.message));
+          .catch((err) => toast(err.message));
 
         <Navigate to="/" />;
       })
@@ -59,7 +61,7 @@ const Registar = () => {
   const handleGoogleSingIn = () => {
     loginWithGoogle()
       .then(() => {
-        toast("login Sussefully.");
+        toast.success("Login Successfully!.");
         navigate("/");
       })
       .catch((err) => console.log(err))

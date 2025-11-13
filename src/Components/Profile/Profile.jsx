@@ -37,7 +37,7 @@ const Profile = () => {
         </div>
 
         {/* Edit Profile Button */}
-        <Link to="/edit-profile" className="w-full">
+        <Link className="w-full">
           <button className="w-full py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300">
             <Edit size={16} />
             Edit Profile

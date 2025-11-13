@@ -1,30 +1,184 @@
-import React from 'react';
+import React from "react";
+import { Link } from "react-router";
+import { Mail, MapPin, Phone } from "lucide-react";
+import mainLogoimg from "../../assets/myLogoW.png";
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 const Footer = () => {
-    return (
-        <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content p-10">
-  <nav>
-    <h6 className="footer-title">Services</h6>
-    <a className="link link-hover">Branding</a>
-    <a className="link link-hover">Design</a>
-    <a className="link link-hover">Marketing</a>
-    <a className="link link-hover">Advertisement</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Company</h6>
-    <a className="link link-hover">About us</a>
-    <a className="link link-hover">Contact</a>
-    <a className="link link-hover">Jobs</a>
-    <a className="link link-hover">Press kit</a>
-  </nav>
-  <nav>
-    <h6 className="footer-title">Legal</h6>
-    <a className="link link-hover">Terms of use</a>
-    <a className="link link-hover">Privacy policy</a>
-    <a className="link link-hover">Cookie policy</a>
-  </nav>
-</footer>
-    );
+  return (
+    <footer className="bg-[#F8FAFF] border-t border-gray-200 mt-10 text-gray-700">
+      {/* 🔹 Main Footer Section */}
+      <div className="container mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        {/* 1️⃣ Brand Info */}
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <img src={mainLogoimg} alt="PayBills Logo" className="h-8" />
+            <h1 className="text-xl font-bold text-[#2841C5]">
+              Pay<span className="text-gray-800">Bills</span>
+            </h1>
+          </div>
+          <p className="text-sm text-gray-600 leading-relaxed">
+            Fast, secure and simple online bill payment platform. Pay your
+            utility bills effortlessly anytime, anywhere.
+          </p>
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-4 mt-5">
+            <a
+              href="#"
+              className="p-2 bg-blue-50 hover:bg-blue-100 rounded-full transition"
+            >
+              <FaFacebook size={18} className="text-[#2841C5]" />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-blue-50 hover:bg-blue-100 rounded-full transition"
+            >
+              <FaTwitter size={18} className="text-[#2841C5]" />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-blue-50 hover:bg-blue-100 rounded-full transition"
+            >
+              <FaInstagram size={18} className="text-[#2841C5]" />
+            </a>
+            <a
+              href="#"
+              className="p-2 bg-blue-50 hover:bg-blue-100 rounded-full transition"
+            >
+              <FaLinkedin size={18} className="text-[#2841C5]" />
+            </a>
+          </div>
+        </div>
+
+        {/* 2️⃣ Quick Links */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Quick Links
+          </h2>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link
+                to="/"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/bills"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Pay Bills
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/my-pay-bills"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                My Pay Bills
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/profile"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Profile
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* 3️⃣ Support */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Support</h2>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <Link
+                to="/faq"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                FAQ
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/contact"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Contact Us
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/privacy"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Privacy Policy
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/terms"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Terms & Conditions
+              </Link>
+            </li>
+          </ul>
+        </div>
+
+        {/* 4️⃣ Contact Info */}
+        <div>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+            Get in Touch
+          </h2>
+          <ul className="space-y-3 text-sm">
+            <li className="flex items-start gap-2">
+              <MapPin size={18} className="text-[#2841C5] mt-0.5" />
+              <span>Jamalpur, Bangladesh</span>
+            </li>
+            <li className="flex items-center gap-2">
+              <Phone size={18} className="text-[#2841C5]" />
+              <a
+                href="tel:+8801979922268"
+                className="hover:text-[#2841C5] transition"
+              >
+                +880 1979-922268
+              </a>
+            </li>
+            <li className="flex items-center gap-2">
+              <Mail size={18} className="text-[#2841C5]" />
+              <a
+                href="mailto:support@paybills.com"
+                className="hover:text-[#2841C5] transition"
+              >
+                support@paybills.com
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* 🔹 Bottom Bar */}
+      <div className="border-t border-gray-200 py-4">
+        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600">
+          <p className="text-center md:text-left">
+            © {new Date().getFullYear()}{" "}
+            <span className="font-semibold text-[#2841C5]">PayBills</span>. All
+            Rights Reserved.
+          </p>
+          <p className="mt-2 md:mt-0 text-center md:text-right text-gray-500">
+            Developed with ❤️ by{" "}
+            <span className="text-[#2841C5] font-medium">Mahialam Rahat</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
