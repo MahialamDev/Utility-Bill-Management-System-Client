@@ -329,7 +329,7 @@ const Navbar = () => {
                   <p className="text-center font-semibold text-blue-600">{user.displayName || "Unknown"}</p>
                   <p className="text-sm text-gray-600">{user.email}</p>
 
-                  {/* Edit Profile Button */}
+               
                   <Link to="/profile" className="w-full">
                     <button className="w-full py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300">
                       <Edit size={16} />
@@ -337,7 +337,7 @@ const Navbar = () => {
                     </button>
                   </Link>
 
-                  {/* Logout Button */}
+             
                   <button
                     onClick={handleLogOut}
                     className="w-full py-2 rounded-xl bg-blue-400 hover:bg-blue-500 text-white font-semibold shadow-md flex items-center justify-center gap-2 transition-all duration-300"

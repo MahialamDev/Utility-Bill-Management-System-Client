@@ -17,7 +17,7 @@ const Registar = () => {
     setLoading,
   } = useAuth();
   if (user) {
-    return <Navigate to="/" />;
+    return <Navigate to="/login" />;
   }
 
   const handleRegister = (e) => {
@@ -52,7 +52,7 @@ const Registar = () => {
           .then()
           .catch((err) => toast(err.message));
 
-        <Navigate to="/" />;
+        <Navigate to="/login" />;
       })
       .catch((err) => console.log(err));
   };

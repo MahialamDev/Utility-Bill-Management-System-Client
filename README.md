@@ -1,16 +1,45 @@
-# React + Vite
+# 💳 Pay Bill Online
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application to manage and pay utility bills online. Users can view recent bills, filter by category, and stay informed with real-time notifications.  
 
-Currently, two official plugins are available:
+**Live Demo:** [https://pay-bill-online.netlify.app/](https://pay-bill-online.netlify.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 📝 Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Recent Bills
+- View latest bills in different categories: Electricity, Gas, Water, Internet
+- Detailed information for each bill: Category, Location, Date
+- "See Details" button for more information
 
-## Expanding the ESLint configuration
+### Categories
+- Filter bills by category
+- Quick access to view all bills or individual types
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Smart Banking
+- Real-time notifications for payments, transfers, and account updates
+- Global cards with no ATM fees, no minimum balance, and no overdrafts
+- Seamless user experience with modern UI components
+
+### Additional
+- Slider/carousel for featured bills or promotions
+- Responsive layout for all devices
+- Interactive icons for better UX
+
+---
+
+## ⚙️ Tech Stack
+
+- **Frontend:** React, Tailwind CSS, JavaScript
+- **UI Components:** React Icons, SlideJS
+- **Deployment:** Netlify
+
+---
+
+## 🖥️ Screenshots
+
+![Home Page](./screenshots/home.png)
+![Recent Bills](./screenshots/recent-bills.png)
+![Bill Details](./screenshots/bill-details.png)
+

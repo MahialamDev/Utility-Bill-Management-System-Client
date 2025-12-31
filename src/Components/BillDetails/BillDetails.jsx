@@ -20,7 +20,7 @@ const BillDetails = () => {
   const { loading, setLoading, user } = useAuth();
   const [billDetailsData, setBillDetailsData] = useState([]);
   const modalRef = useRef();
-  console.log(id);
+  // console.log(id);
   const axiosInstance = useAxios();
 
   useEffect(() => {
@@ -30,10 +30,10 @@ const BillDetails = () => {
       //setLoading(false)
     });
 
-    console.log(axiosInstance);
+    // console.log(axiosInstance);
   }, [setLoading, axiosInstance, id]);
 
-  console.log(billDetailsData);
+  // console.log(billDetailsData);
   const { title, category, amount, location, created_at, description, image } =
     billDetailsData;
 
@@ -80,18 +80,14 @@ const BillDetails = () => {
 
   // Payment month validation variables
 const currentDate = new Date();
-const billDate = created_at ? new Date(created_at) : new Date("invalid");
+  const currentMonth = currentDate.getMonth() +1;
+  console.log('month', currentMonth)
 
-const isValidBillDate = !isNaN(billDate.getTime());
+  const billedMonth = new Date(created_at).getMonth() +1;
 
-const currentMonth = currentDate.getMonth(); // 0-11
-const currentYear = currentDate.getFullYear();
-const billMonth = isValidBillDate ? billDate.getMonth() : -1;
-const billYear = isValidBillDate ? billDate.getFullYear() : -1;
+  console.log('bill_month', billedMonth)
 
-//disable button
-const isDifferentMonth =
-  currentMonth !== billMonth || currentYear !== billYear;
+  
 
   if (loading) return <FullScreenLoader />;
 
@@ -173,23 +169,7 @@ const isDifferentMonth =
 
             {/* Payment Button */}
 <div className="text-center pt-4">
-  <button
-    onClick={!isDifferentMonth ? handleModal : undefined}
-    disabled={isDifferentMonth}
-    className={`px-10 py-3 font-semibold rounded-full shadow-md transition-all duration-300 ${
-      isDifferentMonth
-        ? "bg-gray-300 text-gray-600 cursor-not-allowed"
-        : "bg-[#2841C5] hover:bg-[#1f33a3] text-white hover:shadow-xl cursor-pointer"
-    }`}
-    aria-disabled={isDifferentMonth}
-    title={
-      isDifferentMonth
-        ? "Payment unavailable — bill is not from this month"
-        : "Pay Now"
-    }
-  >
-    {isDifferentMonth ? "Payment Unavailable" : "Pay Now"}
-  </button>
+              <button onClick={handleModal} className="btn btn-accent"> Pay Now</button>
 </div>
 
           </div>
