@@ -1,9 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 @plugin "daisyui";
 
-body{
-    background-color: #F5F5F5;
+
+
+@plugin "daisyui/theme" {
+  name: "light";
+  default: true;
+  --color-primary: #2841C5;
+  --color-secondary: #055C2D;
+  --color-base-100: #F5F5F5;
+  --color-base-300: white;
 }
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: true;
+  --color-primary: #155DFC;
+  --color-secondary: #2daa67;
+    --color-base-300: #1D232A;
+}
+
+
+
+
+body{
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+
+/* Hide scrollbar but allow scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;   /* IE & Edge */
+  scrollbar-width: none;      /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari */
+}
+
+/* color: #FBF8FA */
 
 
 

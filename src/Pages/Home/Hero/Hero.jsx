@@ -3,10 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 // ✅ Local high-quality images (your imported ones)
-import billExpressimg from "../../assets/bill-expenses-on-mobile-phone-260nw-2340444601_imgupscaler.ai_Beta_2K.jpg";
-import creditCardimg from "../../assets/credit-card-online-payment-concept-banner-free-vector_imgupscaler.ai_General_4K.jpg";
-import bill2img from "../../assets/bill-2.jpg";
-import bill4img from "../../assets/bill-4.jpg";
+import billExpressimg from "../../../assets/bill-expenses-on-mobile-phone-260nw-2340444601_imgupscaler.ai_Beta_2K.jpg";
+import creditCardimg from "../../../assets/credit-card-online-payment-concept-banner-free-vector_imgupscaler.ai_General_4K.jpg";
+import bill2img from "../../../assets/bill-2.jpg";
+import bill4img from "../../../assets/bill-4.jpg";
 
 // ✅ Custom modern button
 function Button({ children, onClick }) {

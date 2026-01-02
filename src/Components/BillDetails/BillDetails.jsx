@@ -95,10 +95,10 @@ const currentDate = new Date();
     <MyContainar>
       {/* Details Section */}
       <div className="min-h-screen flex items-center justify-center px-4">
-        <div className="max-w-4xl w-full bg-white/70 backdrop-blur-xl border border-[#2841C5]/10 rounded-3xl shadow-2xl overflow-hidden">
+        <div className="max-w-4xl w-full bg-base-300/70 backdrop-blur-xl border border-primary/10 rounded-3xl shadow-2xl overflow-hidden">
           {/* Top Image Section */}
-          <div className="relative w-full flex justify-center items-center bg-[#2841C5]/5 py-10">
-            <div className="w-52 h-52 bg-white rounded-2xl shadow-lg overflow-hidden border border-[#2841C5]/10">
+          <div className="relative w-full flex justify-center items-center bg-primary/5 py-10">
+            <div className="w-52 h-52 bg-white rounded-2xl shadow-lg overflow-hidden border border-primary/10">
               <img
                 src={image}
                 alt={title}
@@ -108,7 +108,7 @@ const currentDate = new Date();
           </div>
 
           {/* Title */}
-          <h1 className="text-3xl sm:text-4xl font-bold text-center text-[#2841C5] mt-4 mb-8">
+          <h1 className="text-3xl sm:text-4xl font-bold text-center text-primary mt-4 mb-8">
             {title}
           </h1>
 
@@ -116,35 +116,35 @@ const currentDate = new Date();
           <div className="p-8 space-y-8">
             {/* Info Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <div className="bg-[#2841C5]/5 rounded-xl p-4 text-center">
-                <h3 className="text-sm font-semibold text-[#2841C5]/80">
+              <div className="bg-primary/5 rounded-xl p-4 text-center">
+                <h3 className="text-sm font-semibold text-primary/80">
                   Category
                 </h3>
-                <p className="text-lg font-bold text-gray-800 mt-1">
+                <p className="text-lg font-bold text-base-content/90 mt-1">
                   {category}
                 </p>
               </div>
-              <div className="bg-[#2841C5]/5 rounded-xl p-4 text-center">
-                <h3 className="text-sm font-semibold text-[#2841C5]/80">
+              <div className="bg-primary/5 rounded-xl p-4 text-center">
+                <h3 className="text-sm font-semibold text-primary/80">
                   Amount
                 </h3>
-                <p className="text-lg font-bold text-gray-800 mt-1">
+                <p className="text-lg font-bold text-base-content/90 mt-1">
                   ৳ {amount}
                 </p>
               </div>
-              <div className="bg-[#2841C5]/5 rounded-xl p-4 text-center">
-                <h3 className="text-sm font-semibold text-[#2841C5]/80">
+              <div className="bg-primary/5 rounded-xl p-4 text-center">
+                <h3 className="text-sm font-semibold text-primary/80">
                   Location
                 </h3>
-                <p className="text-lg font-bold text-gray-800 mt-1">
+                <p className="text-lg font-bold text-base-content/90 mt-1">
                   {location}
                 </p>
               </div>
-              <div className="bg-[#2841C5]/5 rounded-xl p-4 text-center">
-                <h3 className="text-sm font-semibold text-[#2841C5]/80">
+              <div className="bg-primary/5 rounded-xl p-4 text-center">
+                <h3 className="text-sm font-semibold text-primary/80">
                   Date
                 </h3>
-                <p className="text-lg font-bold text-gray-800 mt-1">
+                <p className="text-lg font-bold text-base-content/90 mt-1">
                   {new Date(created_at).toLocaleDateString("en-GB", {
                     year: "numeric",
                     month: "long",
@@ -155,14 +155,14 @@ const currentDate = new Date();
             </div>
 
             {/* Divider */}
-            <div className="border-t border-[#2841C5]/10"></ div>
+            <div className="border-t border-primary/10"></ div>
 
             {/* Description Section */}
             <div>
-              <h2 className="text-xl font-semibold text-[#2841C5] mb-3">
+              <h2 className="text-xl font-semibold text-primary mb-3">
                 Bill Description
               </h2>
-              <p className="text-gray-700 leading-relaxed text-justify">
+              <p className="text-base-content/75 leading-relaxed text-justify">
                 {description}
               </p>
             </div>
@@ -182,13 +182,13 @@ const currentDate = new Date();
         <div className="modal-box bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 relative">
           {/* Close Button */}
           <form method="dialog" className="absolute right-4 top-4">
-            <button className="btn btn-sm btn-circle bg-[#2841C5] text-white hover:bg-[#1f33a3] border-none">
+            <button className="btn btn-sm btn-circle bg-primary text-white hover:bg-[#1f33a3] border-none">
               <X size={18} />
             </button>
           </form>
 
           {/* Header */}
-          <h1 className="text-2xl font-semibold text-center text-[#2841C5] mb-6">
+          <h1 className="text-2xl font-semibold text-center text-primary mb-6">
             Pay Your Bill
           </h1>
 
@@ -197,11 +197,11 @@ const currentDate = new Date();
             {/* Email */}
             <div>
               <label className="flex items-center gap-2 font-medium text-gray-700 mb-1">
-                <Mail size={18} className="text-[#2841C5]" /> Email
+                <Mail size={18} className="text-primary" /> Email
               </label>
               <input
                 name="email"
-                className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
+                className="input input-bordered w-full rounded-xl focus:border-primary focus:ring-primary"
                 type="email"
                 value={user.email}
                 readOnly
@@ -212,11 +212,11 @@ const currentDate = new Date();
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <label className="flex items-center gap-2 font-medium text-gray-700 mb-1">
-                  <FileText size={18} className="text-[#2841C5]" /> Bill Type
+                  <FileText size={18} className="text-primary" /> Bill Type
                 </label>
                 <input
                   name="category"
-                  className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
+                  className="input input-bordered w-full rounded-xl focus:border-primary focus:ring-primary"
                   type="text"
                   value={billDetailsData.category}
                   readOnly
@@ -224,11 +224,11 @@ const currentDate = new Date();
               </div>
               <div>
                 <label className="flex items-center gap-2 font-medium text-gray-700 mb-1">
-                  <DollarSign size={18} className="text-[#2841C5]" /> Amount
+                  <DollarSign size={18} className="text-primary" /> Amount
                 </label>
                 <input
                   name="amount"
-                  className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
+                  className="input input-bordered w-full rounded-xl focus:border-primary focus:ring-primary"
                   type="text"
                   value={billDetailsData.amount}
                   readOnly
@@ -239,11 +239,11 @@ const currentDate = new Date();
             {/* User Name */}
             <div>
               <label className="flex items-center gap-2 font-medium text-gray-700 mb-1">
-                <User size={18} className="text-[#2841C5]" /> User Name
+                <User size={18} className="text-primary" /> User Name
               </label>
               <input
                 name="name"
-                className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
+                className="input input-bordered w-full rounded-xl focus:border-primary focus:ring-primary"
                 type="text"
                 placeholder="Enter your name"
                 required
@@ -253,11 +253,11 @@ const currentDate = new Date();
             {/* Address */}
             <div>
               <label className="flex items-center gap-2 font-medium text-gray-700 mb-1">
-                <MapPin size={18} className="text-[#2841C5]" /> Address
+                <MapPin size={18} className="text-primary" /> Address
               </label>
               <input
                 name="address"
-                className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
+                className="input input-bordered w-full rounded-xl focus:border-primary focus:ring-primary"
                 type="text"
                 placeholder="Enter your address"
                 maxlength="50"
@@ -268,11 +268,11 @@ const currentDate = new Date();
             {/* Phone */}
             <div>
               <label className="flex items-center gap-2 font-medium text-gray-700 mb-1">
-                <Phone size={18} className="text-[#2841C5]" /> Phone
+                <Phone size={18} className="text-primary" /> Phone
               </label>
               <input
                 name="phone"
-                className="input input-bordered w-full rounded-xl focus:border-[#2841C5] focus:ring-[#2841C5]"
+                className="input input-bordered w-full rounded-xl focus:border-primary focus:ring-primary"
                 type="tel"
                 placeholder="Enter your phone number"
                 required
@@ -284,7 +284,7 @@ const currentDate = new Date();
               <input
                 type="submit"
                 value="Submit Payment"
-                className="btn w-full bg-[#2841C5] text-white border-none rounded-xl hover:bg-[#1f33a3] transition-all duration-200"
+                className="btn w-full bg-primary text-white border-none rounded-xl hover:bg-[#1f33a3] transition-all duration-200"
               />
             </div>
           </form>
@@ -292,7 +292,7 @@ const currentDate = new Date();
           {/* Close Button Bottom */}
           <div className="modal-action mt-4">
             <form method="dialog" className="w-full">
-              <button className="btn w-full rounded-xl border-[#2841C5] text-[#2841C5] hover:bg-[#2841C5] hover:text-white transition-all">
+              <button className="btn w-full rounded-xl border-primary text-primary hover:bg-primary hover:text-white transition-all">
                 Close
               </button>
             </form>

@@ -7,19 +7,21 @@ import InvoicePage from "../Components/Invoice/InvoicePage";
 import Swal from "sweetalert2";
 
 const MyPayBills = () => {
-  const { user, loading, setLoading } = useAuth();
+  const { user } = useAuth();
   const axiosInstance = useAxios();
   const [myPayBills, setMyPayBills] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (user.email) {
+      setLoading(true)
       axiosInstance(`/submited-bills?email=${user.email}`).then((data) => {
         setMyPayBills(data.data);
         console.log(data.data);
         setLoading(false);
       });
     }
-  }, [axiosInstance, user, setLoading]);
+  }, [axiosInstance, user,]);
 
   const handleDeleteBill = (id) => {
     Swal.fire({
@@ -51,99 +53,115 @@ const MyPayBills = () => {
 
   return (
     <MyContainar>
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table table-auto min-w-[700px]">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>SL No.</th>
-                <th>Name</th>
-                <th>Amount</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Date</th>
-                <th>Action</th>
+  <div className="space-y-6 mt-4 md:mt-6">
+    {/* Header */}
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+      <h2 className="text-2xl font-semibold text-gray-800">
+        My Paid Bills
+      </h2>
+      <span className="text-sm text-gray-500">
+        Total: {myPayBills.length} bills
+      </span>
+    </div>
+
+    {/* Table Card */}
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="overflow-x-auto">
+        <table className="min-w-[900px] w-full">
+          <thead className="bg-gray-50 text-left text-sm text-gray-500">
+            <tr>
+              <th className="px-6 py-4">#</th>
+              <th className="px-6 py-4">Customer</th>
+              <th className="px-6 py-4">Amount</th>
+              <th className="px-6 py-4">Address</th>
+              <th className="px-6 py-4">Phone</th>
+              <th className="px-6 py-4">Date</th>
+              <th className="px-6 py-4 text-right">Action</th>
+            </tr>
+          </thead>
+
+          <tbody className="">
+            {myPayBills.map((bill, index) => (
+              <tr
+                key={bill._id}
+                className="hover:bg-gray-50 transition border-b border-primary/5"
+              >
+                <td className="px-6 py-4 font-medium">
+                  {index + 1}
+                </td>
+
+                {/* User */}
+                <td className="px-6 py-4">
+                  <div className="flex items-center gap-3">
+                    <img
+                      src={
+                        bill.image ||
+                        "https://img.daisyui.com/images/profile/demo/2@94.webp"
+                      }
+                      alt=""
+                      className="w-10 h-10 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-medium text-gray-800">
+                        {bill.name}
+                      </p>
+                      <p className="text-xs text-gray-500">
+                        {bill.email}
+                      </p>
+                    </div>
+                  </div>
+                </td>
+
+                {/* Amount */}
+                <td className="px-6 py-4">
+                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-600">
+                    ${bill.amount}
+                  </span>
+                </td>
+
+                {/* Address */}
+                <td className="px-6 py-4 max-w-[220px] truncate text-sm text-gray-600">
+                  {bill.address}
+                </td>
+
+                {/* Phone */}
+                <td className="px-6 py-4 text-sm text-gray-600">
+                  {bill.phone}
+                </td>
+
+                {/* Date */}
+                <td className="px-6 py-4 text-sm text-gray-500">
+                  {new Date(bill.created_at).toLocaleDateString()}
+                </td>
+
+                {/* Action */}
+                <td className="px-6 py-4 text-right">
+                  <div className="flex justify-end gap-2">
+                    <button className="px-3 py-1.5 text-sm rounded-lg border border-blue-500 text-blue-600 hover:bg-blue-50 transition">
+                      Update
+                    </button>
+                    <button
+                      onClick={() => handleDeleteBill(bill._id)}
+                      className="px-3 py-1.5 text-sm rounded-lg border border-red-500 text-red-600 hover:bg-red-50 transition"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                </td>
               </tr>
-            </thead>
-            <tbody>
-              {myPayBills.map((myPayBill, index) => (
-                <tr
-                  key={myPayBill._id}
-                  className="hover:bg-base-200 transition-all duration-200"
-                >
-                  <th>{index + 1}</th>
-
-                  {/* Info */}
-                  <td>
-                    <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 flex-shrink-0">
-                        <img
-                          className="w-full h-full object-cover rounded-full"
-                          src={
-                            myPayBill?.image ||
-                            "https://img.daisyui.com/images/profile/demo/2@94.webp"
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <div className="truncate">
-                        <div className="font-semibold text-base truncate">
-                          {myPayBill.name}
-                        </div>
-                        <div className="text-sm opacity-60 truncate">
-                          {myPayBill.email}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-
-                  <td>
-                    <span className="font-medium text-green-600">
-                      ${myPayBill.amount}
-                    </span>
-                  </td>
-
-                  <td>
-                    <span className="text-sm truncate">
-                      {myPayBill.address}
-                    </span>
-                  </td>
-
-                  <td>
-                    <span className="text-sm">{myPayBill.phone}</span>
-                  </td>
-
-                  <td>
-                    <span className="text-sm text-gray-500">
-                      {new Date(myPayBill.created_at).toLocaleDateString()}
-                    </span>
-                  </td>
-
-                  <th>
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
-                      <button className="btn btn-sm btn-info text-white hover:scale-105 transition-transform w-full sm:w-auto">
-                        Update
-                      </button>
-                      <button
-                        onClick={() => handleDeleteBill(myPayBill._id)}
-                        className="btn btn-sm btn-error text-white hover:scale-105 transition-transform w-full sm:w-auto"
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-
-        <div>
-          <InvoicePage myPayBills={myPayBills} />
-        </div>
+            ))}
+          </tbody>
+        </table>
       </div>
-    </MyContainar>
+    </div>
+
+    {/* Invoice Section */}
+    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex justify-between items-center">
+      <InvoicePage myPayBills={myPayBills} /> 
+    </div>
+  </div>
+</MyContainar>
+
   );
 };
 

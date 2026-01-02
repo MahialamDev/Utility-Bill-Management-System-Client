@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../Layouts/MainLayout";
-import Home from "../Pages/Home";
 import Login from "../Auth/Login/Login";
 import Registar from "../Auth/Registar/Registar";
 import PrivateRoutes from "../Auth/PrivateRoutes/PrivateRoutes";
@@ -10,6 +9,7 @@ import BillDetails from "../Components/BillDetails/BillDetails";
 import Error404 from "../Components/Error/Error404";
 import MyPayBills from "../Pages/MyPayBills";
 import Profile from "../Components/Profile/Profile";
+import Home from "../Pages/Home/Home";
 
 
 const router = createBrowserRouter([

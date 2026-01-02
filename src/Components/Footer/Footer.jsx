@@ -3,21 +3,25 @@ import { Link } from "react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import mainLogoimg from "../../assets/myLogoW.png";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import MyContainar from "../../Layouts/MyContainar";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#F8FAFF] border-t border-gray-200 mt-10 text-gray-700">
+    <footer className="bg-base-300/80 backdrop-blur-2xl border-t border-gray-200/10 mt-10 text-gray-700 text-[17px] relative ">
+      {/* Top glow */}
+
       {/* 🔹 Main Footer Section */}
-      <div className="container mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+      <MyContainar>
+        <div className=" py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
         {/* 1️⃣ Brand Info */}
         <div>
           <div className="flex items-center gap-2 mb-3">
             <img src={mainLogoimg} alt="PayBills Logo" className="h-8" />
             <h1 className="text-xl font-bold text-[#2841C5]">
-              Pay<span className="text-gray-800">Bills</span>
+              Pay<span className="text-base-content/70">Bills</span>
             </h1>
           </div>
-          <p className="text-sm text-gray-600 leading-relaxed">
+          <p className="text-[17px] text-base-content/70 leading-relaxed">
             Fast, secure and simple online bill payment platform. Pay your
             utility bills effortlessly anytime, anywhere.
           </p>
@@ -52,11 +56,11 @@ const Footer = () => {
         </div>
 
         {/* 2️⃣ Quick Links */}
-        <div>
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+        <div className="text-base-content/70">
+          <h2 className="text-[17px] font-semibold text-base-content/70 mb-4">
             Quick Links
           </h2>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-2 text-[17px]">
             <li>
               <Link
                 to="/"
@@ -94,8 +98,8 @@ const Footer = () => {
 
         {/* 3️⃣ Support */}
         <div>
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Support</h2>
-          <ul className="space-y-2 text-sm">
+          <h2 className="text-[17px] font-semibold text-base-content/70 mb-4">Support</h2>
+          <ul className="space-y-2 text-[17px] text-base-content/70">
             <li>
               <Link
                 to="/faq"
@@ -133,10 +137,10 @@ const Footer = () => {
 
         {/* 4️⃣ Contact Info */}
         <div>
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">
+          <h2 className="text-[17px] font-semibold text-base-content/70 mb-4">
             Get in Touch
           </h2>
-          <ul className="space-y-3 text-sm">
+          <ul className="space-y-3 text-[17px] text-base-content/70">
             <li className="flex items-start gap-2">
               <MapPin size={18} className="text-[#2841C5] mt-0.5" />
               <span>Jamalpur, Bangladesh</span>
@@ -162,20 +166,23 @@ const Footer = () => {
           </ul>
         </div>
       </div>
+      </MyContainar>
 
       {/* 🔹 Bottom Bar */}
-      <div className="border-t border-gray-200 py-4">
-        <div className="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-600">
+      <div className="border-t border-gray-400/10 py-4">
+        <MyContainar>
+          <div className=" flex flex-col md:flex-row items-center justify-between text-[17px] text-gray-600">
           <p className="text-center md:text-left">
             © {new Date().getFullYear()}{" "}
             <span className="font-semibold text-[#2841C5]">PayBills</span>. All
             Rights Reserved.
           </p>
           <p className="mt-2 md:mt-0 text-center md:text-right text-gray-500">
-            Developed with ❤️ by{" "}
+            Developed with <span className="inline-block animate-pulse text-red-500">❤️</span> by{" "}
             <span className="text-[#2841C5] font-medium">Mahialam Rahat</span>
           </p>
         </div>
+        </MyContainar>
       </div>
     </footer>
   );
