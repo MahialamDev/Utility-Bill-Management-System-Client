@@ -5,28 +5,18 @@ import useAuth from "../../Hooks/useAuth";
 import { toast } from "react-toastify";
 import { HiMenuAlt2 } from "react-icons/hi";
 import { ClipLoader } from "react-spinners";
-import {
-  CreditCard,
-  Phone,
-  Menu,
-  Search,
-  Bell,
-  User,
-  X,
-  LogOut,
-  Edit,
-} from "lucide-react";
-import mainLogoimg from "../../assets/myLogoW.png";
 import MyContainar from "../../Layouts/MyContainar";
 import Logo from "../UI/Logo";
 import ThemeController from "../UI/ThemeController";
 import { FiBell } from "react-icons/fi";
+import { User, LayoutDashboard, LogOut } from "lucide-react";
 
 const Navbar = () => {
   const { user, logOutUser, setLoading, loading } = useAuth();
   const navigate = useNavigate();
   const [showNav, setShowNav] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   // const location = useLocation();
 
@@ -40,15 +30,18 @@ const Navbar = () => {
       <li className="border-b border-b-gray-100 md:border-none">
         <MyLink to="/bills">Bills</MyLink>
       </li>
+      <li className="border-b border-b-gray-100 md:border-none">
+        <MyLink to="/how-it-works">How It Works</MyLink>
+      </li>
+      <li className="border-b border-b-gray-100 md:border-none">
+            <MyLink to="/contact">Contact</MyLink>
+          </li>
 
       {user && (
         <>
           {/* <li className="border-b border-b-gray-100 md:border-none">
             <MyLink to="/contact">Contact</MyLink>
           </li> */}
-          <li className="border-b border-b-gray-100 md:border-none">
-            <MyLink to="/my-pay-bills">My Pay Bills</MyLink>
-          </li>
         </>
       )}
     </>
@@ -81,10 +74,12 @@ const Navbar = () => {
         </MyContainar>
       </div>
 
-      <header
-        className="sticky top-0 z-50 h-20 bg-base-100/70 backdrop-blur-2xl border-b-2 border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)]"
-      >
-        <MyContainar className={"flex items-center justify-between h-full overflow-hidden"}>
+      <header className="sticky top-0 z-50 h-20 bg-base-100/80 backdrop-blur-2xl border-b-2 border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.06)]">
+        <MyContainar
+          className={
+            "flex items-center justify-between h-full overflow-hidden"
+          }
+        >
           {/* menu and icon */}
           <div className="flex items-center h-full gap-2">
             <HiMenuAlt2 className="md:hidden" size={22} />
@@ -95,70 +90,122 @@ const Navbar = () => {
             <ul className="flex h-full items-center gap-5">{links}</ul>
           </nav>
 
-
           {/* icon and profile */}
           <div className="flex items-center h-full gap-2 overflow-hidden">
             <ThemeController />
 
-
-             {/* Notification */}
+            {/* Notification */}
             <button className="relative p-2 rounded-full hover:bg-gray-100 transition">
-             
-              <FiBell size={22} className="text-gray-700"  />
-            <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
+              <FiBell size={22} className="text-gray-700" />
+              <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full"></span>
             </button>
 
             {/* Profile */}
             <div className="md:min-w-[150px]">
-
               {/* Profile / Login */}
               {loading ? (
                 <ClipLoader color="#4052D6" size={20} />
-              ) : user ?
+              ) : user ? (
                 <div className="relative">
                   {/* Profile Button */}
-                  <button className="flex items-center gap-2 p-1 rounded-full hover:bg-blue-100 transition">
+                  <button
+                    className="flex items-center gap-2 p-1 rounded-full hover:bg-blue-100 transition"
+                    popoverTarget="popover-1"
+                    style={{ anchorName: "--anchor-1" }}
+                  >
                     <img
                       className="w-10 h-10 object-cover rounded-full border-2 border-primary shadow-md"
-                      src={user.photoURL || "https://i.ibb.co/sdP0yB6x/images.jpg"}
+                      src={
+                        user.photoURL || "https://i.ibb.co/sdP0yB6x/images.jpg"
+                      }
                       alt="User"
                       referrerPolicy="no-referrer"
                     />
-                    <span className="hidden md:block font-medium text-primary pr-2">{user.displayName || "User"}</span>
-                  </button>
+                    <span className="hidden md:block font-medium text-primary pr-2">
+                      {user.displayName || "User"}
+                    </span>
+                    </button>
+                    
+                    <div className="relative">
+  {/* Dropdown */}
+  <div
+    className="dropdown dropdown-end bg-base-300 menu w-56 rounded-xl shadow-lg border-base-200 p-2 absolute mt-2 z-50 border"
+    popover="auto"
+    id="popover-1"
+    style={
+      {
+        positionAnchor: "--anchor-1",
+      } /* as React.CSSProperties */
+    }
+  >
+    {/* User Info */}
+    <div className="flex items-center gap-3 p-3 border-b border-base-200">
+      <img
+        src={user?.photoURL || "https://i.ibb.co/2kR5zq0/user.png"}
+        alt="user"
+        className="w-10 h-10 rounded-full object-cover"
+      />
+      <div>
+        <p className="text-sm font-semibold leading-none">
+          {user?.displayName || "User"}
+        </p>
+        <p className="text-xs text-gray-500 truncate">
+          {user?.email}
+        </p>
+      </div>
+    </div>
+
+    {/* Menu Items */}
+    <ul className="mt-2 space-y-1">
+      <li>
+        <Link to={"/dashboard/profile"} className="flex items-center gap-3 w-full px-3 py-2 rounded-lg hover:bg-base-200 transition">
+          <User size={18} />
+          <span>View Profile</span>
+        </Link>
+      </li>
+
+      <li>
+        <Link to={"/dashboard"} className="flex items-center gap-3 w-full px-3 py-2 rounded-lg hover:bg-base-200 transition">
+          <LayoutDashboard size={18} />
+          <span>Dashboard</span>
+        </Link>
+      </li>
+
+      <li>
+        <button
+          onClick={handleLogOut}
+          className="flex items-center gap-3 w-full px-3 py-2 rounded-lg text-red-500 hover:bg-red-50 transition"
+        >
+          <LogOut size={18} />
+          <span>Logout</span>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>
 
 
-                </div> :
-                  <div className="flex items-center gap-3">
-                <Link to="/login">
-                   <button className="px-4 py-1.5 rounded-full bg-transparent border border-primary text-primary text-sm font-medium hover:bg-[#2841C5] hover:text-white transition">
-                     Login
-                   </button>
-                 </Link>
-                 <Link to="/register">
-                   <button className="hidden md:flex px-4 py-1.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-[#1f34a8] transition">
-                     Register
-                   </button>
-                 </Link>
-               </div>
-
-          }
-
+                    
+                </div>
+              ) : (
+                <div className="flex items-center gap-3">
+                  <Link to="/login">
+                    <button className="px-4 py-1.5 rounded-full bg-transparent border border-primary text-primary text-sm font-medium hover:bg-[#2841C5] hover:text-white transition">
+                      Login
+                    </button>
+                  </Link>
+                  <Link to="/register">
+                    <button className="hidden md:flex px-4 py-1.5 rounded-full bg-primary text-white text-sm font-medium hover:bg-[#1f34a8] transition">
+                      Register
+                    </button>
+                  </Link>
+                </div>
+              )}
+            </div>
           </div>
-             
-        
-
-        </div>
-        
-        
-        
-        
         </MyContainar>
       </header>
     </>
-
-
-    
 
     // <header className="w-full bg-white shadow-sm sticky top-0 z-50">
 

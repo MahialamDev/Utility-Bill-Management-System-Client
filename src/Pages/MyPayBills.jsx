@@ -52,7 +52,7 @@ const MyPayBills = () => {
   if (loading) return <FullScreenLoader />;
 
   return (
-    <MyContainar>
+    <div>
   <div className="space-y-6 mt-4 md:mt-6">
     {/* Header */}
     <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
@@ -65,10 +65,10 @@ const MyPayBills = () => {
     </div>
 
     {/* Table Card */}
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+    <div className="bg-base-300 rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
       <div className="overflow-x-auto">
         <table className="min-w-[900px] w-full">
-          <thead className="bg-gray-50 text-left text-sm text-gray-500">
+          <thead className="bg-secondary/20 text-left text-sm text-gray-500">
             <tr>
               <th className="px-6 py-4">#</th>
               <th className="px-6 py-4">Customer</th>
@@ -84,7 +84,7 @@ const MyPayBills = () => {
             {myPayBills.map((bill, index) => (
               <tr
                 key={bill._id}
-                className="hover:bg-gray-50 transition border-b border-primary/5"
+                className="hover:bg-primary/10 transition border-b border-primary/5"
               >
                 <td className="px-6 py-4 font-medium">
                   {index + 1}
@@ -102,7 +102,7 @@ const MyPayBills = () => {
                       className="w-10 h-10 rounded-full object-cover"
                     />
                     <div>
-                      <p className="font-medium text-gray-800">
+                      <p className="text-base-content font-medium ">
                         {bill.name}
                       </p>
                       <p className="text-xs text-gray-500">
@@ -114,7 +114,7 @@ const MyPayBills = () => {
 
                 {/* Amount */}
                 <td className="px-6 py-4">
-                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-green-600">
+                  <span className="px-3 py-1 rounded-full text-sm font-medium bg-green-50 text-secondary/80">
                     ${bill.amount}
                   </span>
                 </td>
@@ -156,11 +156,11 @@ const MyPayBills = () => {
     </div>
 
     {/* Invoice Section */}
-    <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex justify-between items-center">
+    <div className="bg-base-300 rounded-2xl shadow-sm border border-gray-100 p-6 flex justify-between items-center">
       <InvoicePage myPayBills={myPayBills} /> 
     </div>
   </div>
-</MyContainar>
+</div>
 
   );
 };

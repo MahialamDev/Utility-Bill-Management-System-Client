@@ -12,6 +12,7 @@
   --color-secondary: #055C2D;
   --color-base-100: #F5F5F5;
   --color-base-300: white;
+  --color-base-400: black;
 }
 @plugin "daisyui/theme" {
   name: "dark";
@@ -19,6 +20,7 @@
   --color-primary: #155DFC;
   --color-secondary: #2daa67;
     --color-base-300: #1D232A;
+     --color-base-400: white;
 }
 
 

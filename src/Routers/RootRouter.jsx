@@ -10,6 +10,8 @@ import Error404 from "../Components/Error/Error404";
 import MyPayBills from "../Pages/MyPayBills";
 import Profile from "../Components/Profile/Profile";
 import Home from "../Pages/Home/Home";
+import HowItWorks from "../Pages/HowItWorks/HowItWorks";
+import DashboardLayout from "../Layouts/DashboardLayout";
 
 
 const router = createBrowserRouter([
@@ -32,25 +34,36 @@ const router = createBrowserRouter([
             },
             {
                 path: 'contact',
-                element: <PrivateRoutes> <Contact /> </PrivateRoutes>
+                element: <Contact /> 
             },
             {
                 path: 'bills',
                 Component: Bills
             },
             {
+                path: 'how-it-works',
+                Component: HowItWorks
+            },
+            {
                 path: 'bill-details/:id',
                 element: <PrivateRoutes><BillDetails /></PrivateRoutes>
             },
-            {
-                path: 'my-pay-bills',
-                element: <PrivateRoutes><MyPayBills /></PrivateRoutes>
-            },
+            
+        
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivateRoutes><DashboardLayout /></PrivateRoutes>,
+        children: [
             {
                 path: 'profile',
-                element: <PrivateRoutes> <Profile /> </PrivateRoutes>
-            }
-            
+                element: <Profile />
+            },
+            {
+                path: 'my-pay-bills',
+                element: <MyPayBills />
+            },
         ]
     }
 ]);
