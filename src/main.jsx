@@ -8,6 +8,7 @@ import AuthProvider from './Context/AuthProvider.jsx'
 import { ToastContainer } from 'react-toastify'
 import { ThemeProvider } from 'next-themes'
 
+
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>

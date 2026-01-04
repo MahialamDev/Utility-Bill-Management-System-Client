@@ -20,8 +20,7 @@ const Navbar = () => {
 
   // const location = useLocation();
 
-  console.log("Your User", user);
-  console.log(showNav)
+
 
   const links = (
     <>

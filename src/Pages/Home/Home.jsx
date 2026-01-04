@@ -1,4 +1,5 @@
 import RecentBills from "../../Components/RecentBills/RecentBills";
+import RecentPaid from "../../Components/RecentPaid/RecentPaid";
 import MyContainar from "../../Layouts/MyContainar";
 import Faq from "../FooterPage/Faq";
 import Hero from "./Hero/Hero";
@@ -16,9 +17,10 @@ const Home = () => {
             {/* <Hero /> */}
             <Hero2 />
             <MyContainar>
-            {/* <SwipeHome /> */}
+                {/* <SwipeHome /> */}
+                <RecentPaid />
            
-                <RecentBills />
+                {/* <RecentBills /> */}
             <Refer></Refer>
             <RealTimeNotification />
             <Support />
