@@ -1,6 +1,7 @@
 import React from "react";
 import banner1 from "../../../assets/banner-1.jpg";
 import MyContainar from "../../../Layouts/MyContainar";
+import { Link } from "react-router";
 
 const Hero2 = () => {
   return (
@@ -32,9 +33,9 @@ const Hero2 = () => {
 
           {/* CTA */}
           <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <button className="btn btn-primary btn-lg rounded-xl">
-              Start Free
-            </button>
+            <Link to='/bills' className="btn btn-primary btn-lg rounded-xl">
+              Pay Bill
+            </Link>
 
             <button className="btn btn-outline btn-lg rounded-xl">
               View Demo

@@ -1,5 +1,6 @@
 import RecentBills from "../../Components/RecentBills/RecentBills";
 import MyContainar from "../../Layouts/MyContainar";
+import Faq from "../FooterPage/Faq";
 import Hero from "./Hero/Hero";
 import Hero2 from "./Hero2/Hero2";
 import RealTimeNotification from "./RealTimeNotification/RealTimeNotification";
@@ -21,7 +22,11 @@ const Home = () => {
             <Refer></Refer>
             <RealTimeNotification />
             <Support />
-        </MyContainar>
+            </MyContainar>
+            <div id="faq-section">
+
+            <Faq />
+            </div>
         </div>
     );
 };

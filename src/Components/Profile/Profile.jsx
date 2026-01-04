@@ -4,6 +4,7 @@ import { Edit, Key, Lock, LogOut, Mail, Save, Settings, SquarePen, X } from "luc
 import { toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 
+
 const Profile = () => {
   const { user, logOutUser, } = useAuth();
   const [edit, setEdit] = useState(false);
@@ -40,9 +41,9 @@ const Profile = () => {
     <div className="space-y-5 mx-auto">
       {/* Profile info */}
       <div className="flex items-center gap-5 md:gap-10 py-6 p-3  bg-base-300 shadow-md rounded-xl relative">
-        <div className="w-25 md:w-30 rounded-full">
+        <div className="w-25 h-25 md:h-30 md:w-30 rounded-full">
           <img
-            className="w-full rounded-full"
+            className="w-full h-full max-auto object-cover rounded-full"
             src={user?.photoURL}
             referrerPolicy="no-referrer"
             alt=""
@@ -187,7 +188,7 @@ const Profile = () => {
       {/* Logout */}
       <button
         onClick={handleLogOut}
-        className="w-full py-3 rounded-xl bg-red-500 text-white font-semibold flex items-center justify-center gap-2"
+        className="w-full max-w-40 py-3 rounded-xl bg-red-500 text-white font-semibold flex items-center justify-center gap-2"
       >
         <LogOut size={18} /> Log Out
       </button>

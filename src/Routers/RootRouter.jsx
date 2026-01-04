@@ -12,6 +12,10 @@ import Profile from "../Components/Profile/Profile";
 import Home from "../Pages/Home/Home";
 import HowItWorks from "../Pages/HowItWorks/HowItWorks";
 import DashboardLayout from "../Layouts/DashboardLayout";
+import Overview from "../Pages/Dashboard/Overview";
+import Privacy from "../Pages/FooterPage/Privacy";
+import Trems from "../Pages/FooterPage/Trems";
+import Help from "../Pages/FooterPage/help";
 
 
 const router = createBrowserRouter([
@@ -46,7 +50,19 @@ const router = createBrowserRouter([
             },
             {
                 path: 'bill-details/:id',
-                element: <PrivateRoutes><BillDetails /></PrivateRoutes>
+                element:<BillDetails />
+            },
+            {
+                path: 'privacy',
+                element: <Privacy />
+            },
+            {
+                path: 'terms',
+                element: <Trems />
+            },
+            {
+                path: 'help',
+                element: <Help />
             },
             
         
@@ -56,6 +72,11 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <PrivateRoutes><DashboardLayout /></PrivateRoutes>,
         children: [
+            {
+                index: true,
+                Component: Overview
+        },
+        
             {
                 path: 'profile',
                 element: <Profile />

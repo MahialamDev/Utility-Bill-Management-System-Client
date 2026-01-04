@@ -17,7 +17,7 @@
 @plugin "daisyui/theme" {
   name: "dark";
   default: true;
-  --color-primary: #155DFC;
+  --color-primary: #1254E5 ;
   --color-secondary: #2daa67;
     --color-base-300: #1D232A;
      --color-base-400: white;
@@ -44,6 +44,36 @@ body{
 }
 
 /* color: #FBF8FA */
+
+/* SUCCESS Toast Background */
+.Toastify__toast--success {
+  background: #2841C5 !important;
+  color: #ffffff !important;
+  border-radius: 14px;
+  font-weight: 500;
+  box-shadow: 0 10px 30px rgba(40, 65, 197, 0.35);
+}
+
+/* SUCCESS Progress Bar (left → right animation) */
+.Toastify__progress-bar--success {
+  background: linear-gradient(90deg, #ffffff, #dbe3ff) !important;
+  height: 4px;
+}
+
+/* SUCCESS Icon color */
+.Toastify__toast--success .Toastify__toast-icon svg {
+  fill: #ffffff !important;
+}
+
+/* Close Button */
+.Toastify__close-button {
+  color: #ffffff !important;
+  opacity: 0.8;
+}
+.Toastify__close-button:hover {
+  opacity: 1;
+}
+
 
 
 

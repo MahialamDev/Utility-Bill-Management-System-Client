@@ -26,8 +26,8 @@ const DashboardLayout = () => {
     { name: "Overview", to: "/dashboard", icon: <LayoutDashboard size={20} /> },
     { name: "My Bills", to: "/dashboard/my-pay-bills", icon: <FileText size={20} /> },
     { name: "Profile", to: "/dashboard/profile", icon: <User size={20} /> },
-    { name: "Add Bill", to: "/dashboard/add-bill", icon: <PlusCircle size={20} /> },
-    { name: "Settings", to: "/dashboard/settings", icon: <Settings size={20} /> },
+    // { name: "Add Bill", to: "/dashboard/add-bill", icon: <PlusCircle size={20} /> },
+    // { name: "Settings", to: "/dashboard/settings", icon: <Settings size={20} /> },
   ];
 
   const renderLinks = () =>

@@ -11,7 +11,7 @@ const Contact = () => {
           <h1 className="text-3xl md:text-5xl font-bold text-primary">
             Contact Us
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base-content max-w-2xl mx-auto">
             Have a question or need support? We’re here to help! Reach out to us through any of the options below.
           </p>
         </MyContainar>
@@ -25,7 +25,7 @@ const Contact = () => {
             <Phone className="w-8 h-8 text-primary mt-1" />
             <div>
               <h3 className="font-bold text-xl text-base-400">Phone</h3>
-              <p className="text-gray-600 mt-1">+880 1979-922268</p>
+              <p className="text-gray-500 mt-1">+880 1979-922268</p>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ const Contact = () => {
             <Mail className="w-8 h-8 text-primary mt-1" />
             <div>
               <h3 className="font-bold text-xl text-base-400">Email</h3>
-              <p className="text-gray-600 mt-1">mahialam407@gmail.com</p>
+              <p className="text-gray-500 mt-1">mahialam407@gmail.com</p>
             </div>
           </div>
 
@@ -43,7 +43,7 @@ const Contact = () => {
             <MapPin className="w-8 h-8 text-primary mt-1" />
             <div>
               <h3 className="font-bold text-xl text-base-400">Address</h3>
-              <p className="text-gray-600 mt-1">
+              <p className="text-gray-500 mt-1">
                 Maloncha, Melandah, Jamalpur, Mymensingh, Bangladesh
               </p>
             </div>
@@ -71,7 +71,7 @@ const Contact = () => {
       <div className="py-16 bg-base-300/60 backdrop-blur-2xl">
         <MyContainar className="max-w-3xl mx-auto space-y-6">
           <h2 className="text-2xl md:text-3xl font-bold text-center">Send Us a Message</h2>
-          <p className="text-gray-600 text-center">
+          <p className="text-base-content text-center">
             Have questions? Fill out the form below and we’ll get back to you as soon as possible.
           </p>
 

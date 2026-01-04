@@ -1,11 +1,26 @@
 import React from "react";
-import { Link } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 import { Mail, MapPin, Phone } from "lucide-react";
 import mainLogoimg from "../../assets/myLogoW.png";
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
 import MyContainar from "../../Layouts/MyContainar";
 
 const Footer = () => {
+    const navigate = useNavigate();
+  const location = useLocation();
+
+  const handleFaqScroll = () => {
+    if (location.pathname !== "/") {
+      navigate("/", { replace: true }); // Home page-এ নেবে
+      setTimeout(() => {
+        const faq = document.getElementById("faq-section");
+        if (faq) faq.scrollIntoView({ behavior: "smooth" });
+      }, 100); // short delay until home renders
+    } else {
+      const faq = document.getElementById("faq-section");
+      if (faq) faq.scrollIntoView({ behavior: "smooth" });
+    }
+  };
   return (
     <footer className="bg-base-300/80 backdrop-blur-2xl border-t border-gray-200/10 mt-10 text-gray-700 text-[17px] relative ">
       {/* Top glow */}
@@ -21,7 +36,7 @@ const Footer = () => {
               Pay<span className="text-base-content/70">Bills</span>
             </h1>
           </div>
-          <p className="text-[17px] text-base-content/70 leading-relaxed">
+          <p className=" text-base-content/70 leading-relaxed">
             Fast, secure and simple online bill payment platform. Pay your
             utility bills effortlessly anytime, anywhere.
           </p>
@@ -60,7 +75,7 @@ const Footer = () => {
           <h2 className="text-[17px] font-semibold text-base-content/70 mb-4">
             Quick Links
           </h2>
-          <ul className="space-y-2 text-[17px]">
+          <ul className="space-y-2 ">
             <li>
               <Link
                 to="/"
@@ -68,7 +83,8 @@ const Footer = () => {
               >
                 Home
               </Link>
-            </li>
+              </li>
+              
             <li>
               <Link
                 to="/bills"
@@ -76,10 +92,19 @@ const Footer = () => {
               >
                 Pay Bills
               </Link>
+              </li>
+               <li>
+              <Link
+                to="/dashboard/profile"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Profile
+              </Link>
             </li>
+              
             <li>
               <Link
-                to="/my-pay-bills"
+                to="/dashboard/my-pay-bills"
                 className="hover:text-[#2841C5] transition-colors duration-200"
               >
                 My Pay Bills
@@ -87,27 +112,28 @@ const Footer = () => {
             </li>
             <li>
               <Link
-                to="/profile"
+                to="/how-it-works"
                 className="hover:text-[#2841C5] transition-colors duration-200"
               >
-                Profile
+                How It Works
               </Link>
             </li>
+           
           </ul>
         </div>
 
         {/* 3️⃣ Support */}
         <div>
           <h2 className="text-[17px] font-semibold text-base-content/70 mb-4">Support</h2>
-          <ul className="space-y-2 text-[17px] text-base-content/70">
+          <ul className="space-y-2 text-base-content/70">
             <li>
-              <Link
-                to="/faq"
-                className="hover:text-[#2841C5] transition-colors duration-200"
-              >
-                FAQ
-              </Link>
-            </li>
+      <button
+        onClick={handleFaqScroll}
+        className="hover:text-[#2841C5] transition-colors duration-200"
+      >
+        FAQ
+      </button>
+    </li>
             <li>
               <Link
                 to="/contact"
@@ -132,6 +158,14 @@ const Footer = () => {
                 Terms & Conditions
               </Link>
             </li>
+            <li>
+              <Link
+                to="/help"
+                className="hover:text-[#2841C5] transition-colors duration-200"
+              >
+                Help Center
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -140,7 +174,7 @@ const Footer = () => {
           <h2 className="text-[17px] font-semibold text-base-content/70 mb-4">
             Get in Touch
           </h2>
-          <ul className="space-y-3 text-[17px] text-base-content/70">
+          <ul className="space-y-3  text-base-content/70">
             <li className="flex items-start gap-2">
               <MapPin size={18} className="text-[#2841C5] mt-0.5" />
               <span>Jamalpur, Bangladesh</span>

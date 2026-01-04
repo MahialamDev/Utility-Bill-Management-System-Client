@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import useAxios from "../../Hooks/useAxios";
 import useAuth from "../../Hooks/useAuth";
 import FullScreenLoader from "../../Loader/FullScreenLoader";
@@ -20,6 +20,7 @@ const BillDetails = () => {
   const { loading, setLoading, user } = useAuth();
   const [billDetailsData, setBillDetailsData] = useState([]);
   const modalRef = useRef();
+  const navigate = useNavigate();
   // console.log(id);
   const axiosInstance = useAxios();
 
@@ -38,7 +39,11 @@ const BillDetails = () => {
     billDetailsData;
 
   const handleModal = () => {
-    modalRef.current.showModal();
+    if (!user) {
+      navigate('/login')
+    }
+
+     modalRef.current.showModal();
   };
 
   const handlePayBill = (e) => {
@@ -178,7 +183,9 @@ const currentDate = new Date();
 
       {/* Modal Open */}
 
-      <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
+      {
+        user && 
+          <dialog ref={modalRef} className="modal modal-bottom sm:modal-middle">
         <div className="modal-box bg-white rounded-2xl shadow-2xl border border-gray-100 p-6 relative">
           {/* Close Button */}
           <form method="dialog" className="absolute right-4 top-4">
@@ -298,7 +305,10 @@ const currentDate = new Date();
             </form>
           </div>
         </div>
-      </dialog>
+          </dialog> 
+      }
+
+      
     </MyContainar>
   );
 };

@@ -14,7 +14,7 @@ const HowItWorks = () => {
         <h1 className="text-center mb-2 font-bold text-2xl md:text-5xl">
           How It Works
         </h1>
-        <p className="text-center max-w-2xl mx-auto mb-5 text-gray-600 leading-relaxed">
+        <p className="text-center  max-w-2xl mx-auto mb-5 text-base-content leading-relaxed">
           Paying your utility bills has never been easier. Follow these simple steps
           to securely manage and pay your bills online.
         </p>
@@ -43,7 +43,7 @@ const HowItWorks = () => {
             >
               <div className="flex justify-between items-center mb-2">
                 <img src={step.icon} alt="" className="w-12 h-12 md:w-16 md:h-16" />
-                <h1 className="md:text-5xl italic text-gray-500 font-bold">{step.number}</h1>
+                <h1 className="text-2xl md:text-5xl italic text-gray-500 font-bold">{step.number}</h1>
               </div>
               <h2 className="font-bold text-xl md:text-2xl text-base-400">
                 {step.title}

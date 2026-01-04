@@ -21,6 +21,7 @@ const Navbar = () => {
   // const location = useLocation();
 
   console.log("Your User", user);
+  console.log(showNav)
 
   const links = (
     <>
@@ -82,13 +83,20 @@ const Navbar = () => {
         >
           {/* menu and icon */}
           <div className="flex items-center h-full gap-2">
-            <HiMenuAlt2 className="md:hidden" size={22} />
+            <div onClick={()=> setShowNav(!showNav)}>
+               <HiMenuAlt2  className="md:hidden" size={22} />
+           </div>
             <Logo />
           </div>
           {/* desktop Nav */}
           <nav className="hidden md:flex items-center h-full">
             <ul className="flex h-full items-center gap-5">{links}</ul>
-          </nav>
+          </nav> 
+
+          
+
+
+
 
           {/* icon and profile */}
           <div className="flex items-center h-full gap-2 overflow-hidden">
@@ -205,6 +213,29 @@ const Navbar = () => {
           </div>
         </MyContainar>
       </header>
+
+      <nav
+  onClick={() => setShowNav(false)}
+  className={`md:hidden fixed inset-0 top-0 w-full h-screen z-50 transition-colors duration-300 ${
+    showNav ? "bg-black/40 backdrop-blur-sm pointer-events-auto" : "pointer-events-none"
+  }`}
+>
+  <div
+    onClick={(e) => e.stopPropagation()}
+    className={`bg-base-300 w-[70%] h-full p-6 absolute top-0 transition-all duration-500 ease-in-out shadow-2xl rounded-r-2xl ${
+      showNav ? "left-0" : "-left-full"
+    }`}
+  >
+    <ul className="space-y-4">{links}</ul>
+    <button
+      className="btn bg-amber-500 mt-6 hover:bg-amber-600 transition-colors duration-300"
+      onClick={() => setShowNav(false)}
+    >
+      Close
+    </button>
+  </div>
+</nav>
+
     </>
 
     // <header className="w-full bg-white shadow-sm sticky top-0 z-50">

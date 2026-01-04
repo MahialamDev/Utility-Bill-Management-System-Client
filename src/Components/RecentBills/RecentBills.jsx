@@ -42,7 +42,7 @@ const RecentBills = () => {
 
   return (
     <section className="py-16 bg-base-100">
-      <MyContainar>
+      <div>
 
         {/* Category Header */}
         <div className="flex items-center justify-between mb-6">
@@ -138,7 +138,7 @@ const RecentBills = () => {
           ))}
         </div>
 
-      </MyContainar>
+      </div>
     </section>
   );
 };
