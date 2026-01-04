@@ -39,9 +39,9 @@ const Navbar = () => {
 
       {user && (
         <>
-          {/* <li className="border-b border-b-gray-100 md:border-none">
-            <MyLink to="/contact">Contact</MyLink>
-          </li> */}
+          <li className="border-b border-b-gray-100 md:border-none">
+            <MyLink to="/dashboard/profile">Profile</MyLink>
+          </li>
         </>
       )}
     </>

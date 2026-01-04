@@ -49,7 +49,7 @@ const Bills = () => {
 
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 md:gap-6 mt-5">
         {allBills.map(bill => <BillCards key={bill._id} bill={bill} />)}
       </div>
     </MyContainar>
